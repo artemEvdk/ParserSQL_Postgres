@@ -1,4 +1,4 @@
-// Generated from D:/пїЅпїЅпїЅпїЅпїЅ/2 пїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
+// Generated from D:/Учеба/2 курс/Курсач/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
 package org.example.Parser;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -227,6 +227,76 @@ public interface PostgreSQLListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTable_reference(PostgreSQLParser.Table_referenceContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#table_primary}.
+	 * @param ctx the parse tree
+	 */
+	void enterTable_primary(PostgreSQLParser.Table_primaryContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#table_primary}.
+	 * @param ctx the parse tree
+	 */
+	void exitTable_primary(PostgreSQLParser.Table_primaryContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#join_clause}.
+	 * @param ctx the parse tree
+	 */
+	void enterJoin_clause(PostgreSQLParser.Join_clauseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#join_clause}.
+	 * @param ctx the parse tree
+	 */
+	void exitJoin_clause(PostgreSQLParser.Join_clauseContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#join_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterJoin_type(PostgreSQLParser.Join_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#join_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitJoin_type(PostgreSQLParser.Join_typeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#join_spec}.
+	 * @param ctx the parse tree
+	 */
+	void enterJoin_spec(PostgreSQLParser.Join_specContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#join_spec}.
+	 * @param ctx the parse tree
+	 */
+	void exitJoin_spec(PostgreSQLParser.Join_specContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#column_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumn_list(PostgreSQLParser.Column_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#column_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumn_list(PostgreSQLParser.Column_listContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#column_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumn_name(PostgreSQLParser.Column_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#column_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumn_name(PostgreSQLParser.Column_nameContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link PostgreSQLParser#alias}.
+	 * @param ctx the parse tree
+	 */
+	void enterAlias(PostgreSQLParser.AliasContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link PostgreSQLParser#alias}.
+	 * @param ctx the parse tree
+	 */
+	void exitAlias(PostgreSQLParser.AliasContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link PostgreSQLParser#table_name}.
 	 * @param ctx the parse tree

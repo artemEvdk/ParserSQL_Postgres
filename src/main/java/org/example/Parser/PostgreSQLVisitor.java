@@ -1,4 +1,4 @@
-// Generated from D:/пїЅпїЅпїЅпїЅпїЅ/2 пїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
+// Generated from D:/Учеба/2 курс/Курсач/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
 package org.example.Parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -142,6 +142,48 @@ public interface PostgreSQLVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTable_reference(PostgreSQLParser.Table_referenceContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#table_primary}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTable_primary(PostgreSQLParser.Table_primaryContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#join_clause}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJoin_clause(PostgreSQLParser.Join_clauseContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#join_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJoin_type(PostgreSQLParser.Join_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#join_spec}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitJoin_spec(PostgreSQLParser.Join_specContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#column_list}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColumn_list(PostgreSQLParser.Column_listContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#column_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColumn_name(PostgreSQLParser.Column_nameContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link PostgreSQLParser#alias}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitAlias(PostgreSQLParser.AliasContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link PostgreSQLParser#table_name}.
 	 * @param ctx the parse tree

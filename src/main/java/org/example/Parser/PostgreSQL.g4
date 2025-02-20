@@ -29,8 +29,8 @@ select_list
     ;
 
 select_item
-    : expression (AS? (ID | QUOTED_ID))?
-    | aggregate_function (AS? (ID | QUOTED_ID))?
+    : expression (AS? alias)?
+    | aggregate_function (AS? alias)?
     ;
 
 aggregate_function
@@ -101,11 +101,45 @@ order_by_expression
     ;
 
 table_expression
-    : table_reference (',' table_reference)*
+    : table_reference
     ;
 
 table_reference
-    : table_name (AS? (ID | QUOTED_ID))?
+    : table_primary (join_clause)*
+    ;
+
+table_primary
+    : table_name (AS? alias)?
+    | '(' select_statement ')' (AS? alias)?
+    ;
+
+join_clause
+    : (join_type)? JOIN table_primary join_spec?
+    | ',' table_primary
+    ;
+
+join_type
+    : INNER
+    | ( LEFT | RIGHT | FULL ) OUTER?
+    | CROSS
+    | NATURAL
+    ;
+
+join_spec
+    : ON condition
+    | USING '(' column_list ')'
+    ;
+
+column_list
+    : column_name (',' column_name)*
+    ;
+
+column_name
+    : ID | QUOTED_ID
+    ;
+
+alias
+    : ID | QUOTED_ID
     ;
 
 table_name
@@ -126,8 +160,6 @@ literal
     ;
 
 // Lexer Rules
-
-
 SELECT : 'SELECT';
 FROM : 'FROM';
 WHERE : 'WHERE';
@@ -151,6 +183,16 @@ TRUE : 'TRUE';
 FALSE : 'FALSE';
 OR : 'OR';
 AND : 'AND';
+JOIN : 'JOIN';
+INNER : 'INNER';
+LEFT : 'LEFT';
+RIGHT : 'RIGHT';
+FULL : 'FULL';
+OUTER : 'OUTER';
+CROSS : 'CROSS';
+NATURAL : 'NATURAL';
+ON : 'ON';
+USING : 'USING';
 GT : '>';
 LT : '<';
 GTE : '>=';
