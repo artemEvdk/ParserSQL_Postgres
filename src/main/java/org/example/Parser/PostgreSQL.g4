@@ -57,6 +57,7 @@ logical_and_expression
 
 comparison_expression
     : term ( ( EQ | NE | GT | LT | GTE | LTE ) term )?
+    | term IN '(' select_statement ')'
     ;
 
 term
@@ -193,6 +194,7 @@ CROSS : 'CROSS';
 NATURAL : 'NATURAL';
 ON : 'ON';
 USING : 'USING';
+IN : 'IN'; // Добавлено ключевое слово IN
 GT : '>';
 LT : '<';
 GTE : '>=';
