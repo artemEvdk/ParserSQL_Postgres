@@ -1,14 +1,14 @@
-package org.example.Tree;
+package org.example.tree;
 
 import org.antlr.v4.gui.TreeViewer;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.example.Parser.PostgreSQLParser;
+import org.example.parser.generated.PostgreSQLParser;
 
 import javax.swing.*;
 import java.util.Arrays;
 
-public class GuiTree {
-    public static void showTreeInGUI(PostgreSQLParser parser, ParseTree tree) {
+public class GuiTreeVisualizer {
+    public static void showTree(PostgreSQLParser parser, ParseTree tree) {
 
         JFrame frame = new JFrame("ANTLR Parse Tree");
         JPanel panel = new JPanel();

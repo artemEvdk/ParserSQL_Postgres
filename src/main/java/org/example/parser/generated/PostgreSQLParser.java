@@ -1,9 +1,10 @@
 // Generated from D:/�����/2 ����/������/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
-package org.example.Parser;
+package org.example.parser.generated;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
+
 import java.util.List;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue", "this-escape"})
@@ -130,7 +131,7 @@ public class PostgreSQLParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_parse; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof PostgreSQLListener ) ((PostgreSQLListener)listener).enterParse(this);
+			if ( listener instanceof PostgreSQLListener) ((PostgreSQLListener)listener).enterParse(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
@@ -138,7 +139,7 @@ public class PostgreSQLParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof PostgreSQLVisitor ) return ((PostgreSQLVisitor<? extends T>)visitor).visitParse(this);
+			if ( visitor instanceof PostgreSQLVisitor) return ((PostgreSQLVisitor<? extends T>)visitor).visitParse(this);
 			else return visitor.visitChildren(this);
 		}
 	}

@@ -160,7 +160,6 @@ literal
     | FALSE
     ;
 
-// Lexer Rules
 SELECT : 'SELECT';
 FROM : 'FROM';
 WHERE : 'WHERE';
@@ -194,7 +193,7 @@ CROSS : 'CROSS';
 NATURAL : 'NATURAL';
 ON : 'ON';
 USING : 'USING';
-IN : 'IN'; // Добавлено ключевое слово IN
+IN : 'IN';
 GT : '>';
 LT : '<';
 GTE : '>=';

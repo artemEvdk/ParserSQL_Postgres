@@ -1,4 +1,4 @@
-package org.example;
+package org.example.util;
 
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;

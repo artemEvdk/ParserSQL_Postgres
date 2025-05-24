@@ -1,5 +1,5 @@
-// Generated from D:/Учеба/2 курс/Курсач/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
-package org.example.Parser;
+// Generated from D:/пїЅпїЅпїЅпїЅпїЅ/2 пїЅпїЅпїЅпїЅ/пїЅпїЅпїЅпїЅпїЅпїЅ/ParserSQL_Postgres/src/main/java/org/example/Parser/PostgreSQL.g4 by ANTLR 4.13.2
+package org.example.parser.generated;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**

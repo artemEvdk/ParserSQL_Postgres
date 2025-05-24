@@ -1,4 +1,4 @@
-package org.example.Tree;
+package org.example.tree;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -43,10 +43,8 @@ public class TreeToDotSerializer {
      */
     private static String getNodeLabel(ParseTree tree) {
         if (tree instanceof TerminalNode) {
-            // Терминальный узел (лист)
             return tree.getText();
         } else if (tree instanceof ParserRuleContext) {
-            // Нетерминальный узел (правило)
             return tree.getClass().getSimpleName().replace("Context", "");
         }
         return "UNKNOWN";
