@@ -1,29 +1,44 @@
 package org.example.parser;
 
+
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.example.parser.generated.PostgreSQLLexer;
 import org.example.parser.generated.PostgreSQLParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SqlParserService {
+    private static final Logger logger = LoggerFactory.getLogger(SqlParserService.class);
 
-    public SqlParseResult parse(String sql) {
-        PostgreSQLLexer lexer = new PostgreSQLLexer(CharStreams.fromString(sql));
+    public ParseTree parseSql(String sql, PostgreSQLParser[] parserHolder) {
+        logger.info("Начало парсинга SQL-скрипта.");
+        logger.debug("SQL: {}", sql);
+
+        CharStream input = CharStreams.fromString(sql);
+        PostgreSQLLexer lexer = new PostgreSQLLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
+
         PostgreSQLParser parser = new PostgreSQLParser(tokens);
+        parserHolder[0] = parser;
 
         parser.removeErrorListeners();
-        parser.addErrorListener(new BaseErrorListener() {
-            @Override
-            public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol,
-                                    int line, int charPositionInLine,
-                                    String msg, RecognitionException e) {
-                throw new RuntimeException("Syntax error at line " + line + ", pos " + charPositionInLine + ": " + msg);
-            }
-        });
+        lexer.removeErrorListeners();
 
-        ParseTree tree = parser.statement();
-        return new SqlParseResult(parser, tree);
+        SyntaxErrorListener errorListener = new SyntaxErrorListener();
+        parser.addErrorListener(errorListener);
+        lexer.addErrorListener(errorListener);
+
+        ParseTree tree = parser.statement(); // начальный rule может отличаться в зависимости от грамматики
+
+        if (errorListener.hasErrors()) {
+            String message = "Синтаксические ошибки при парсинге SQL: " + String.join("; ", errorListener.getErrors());
+            logger.error(message);
+            throw new RuntimeException(message);
+        }
+
+        logger.info("Парсинг завершён успешно.");
+        return tree;
     }
 
 }

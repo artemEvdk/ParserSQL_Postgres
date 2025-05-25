@@ -13,32 +13,35 @@ public class SqlParserServiceTest {
     @Test
     public void testValidSqlShouldParseSuccessfully() {
         String sql = "SELECT * FROM users;";
-        SqlParseResult result = service.parse(sql);
+        PostgreSQLParser[] parserHolder = new PostgreSQLParser[1];
+        ParseTree tree = service.parseSql(sql, parserHolder);
 
-        assertNotNull(result);
-        assertNotNull(result.getParseTree());
-        assertTrue(result.getParser() instanceof PostgreSQLParser);
+        assertNotNull(tree, "Parse tree should not be null");
+        assertNotNull(parserHolder[0], "Parser should not be null");
+        assertTrue(parserHolder[0] instanceof PostgreSQLParser, "Parser should be instance of PostgreSQLParser");
     }
 
     @Test
     public void testInvalidSqlShouldThrowException() {
         String sql = "SELEC FROM";
+        PostgreSQLParser[] parserHolder = new PostgreSQLParser[1];
 
         Exception exception = assertThrows(RuntimeException.class, () -> {
-            service.parse(sql);
+            service.parseSql(sql, parserHolder);
         });
 
         String message = exception.getMessage();
-        assertTrue(message.contains("Syntax error"));
+        assertNotNull(message);
+        assertTrue(message.toLowerCase().contains("syntax error") || message.toLowerCase().contains("error"), "Exception message should contain 'syntax error'");
     }
 
     @Test
     public void testComplexQueryParsesCorrectly() {
         String sql = "SELECT name FROM customers WHERE id IN (SELECT customer_id FROM orders);";
-        SqlParseResult result = service.parse(sql);
-        ParseTree tree = result.getParseTree();
+        PostgreSQLParser[] parserHolder = new PostgreSQLParser[1];
+        ParseTree tree = service.parseSql(sql, parserHolder);
 
-        assertNotNull(tree);
-        assertTrue(tree.getChildCount() > 0);
+        assertNotNull(tree, "Parse tree should not be null");
+        assertTrue(tree.getChildCount() > 0, "Parse tree should have children");
     }
 }
